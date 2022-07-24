@@ -1,0 +1,415 @@
+import React, { Component } from "react";
+import NewsItem from "../NewsItem";
+import Spinner from "./Spinner";
+
+export class News extends Component {
+    articles = [
+        {
+            source: {
+                id: "cnn",
+                name: "CNN",
+            },
+            author: "Chris Isidore",
+            title:
+                "Inflation rises at fastest pace in 40 years, pushed up by record gas prices - CNN",
+            description: "The pain of higher prices continues for US consumers.",
+            url: "https://www.cnn.com/2022/06/10/economy/may-inflation-gas-prices/index.html",
+            urlToImage:
+                "https://media.cnn.com/api/v1/images/stellar/prod/220610073817-01-gas-prices-california-0601.jpg?c=16x9&q=w_800,c_fill",
+            publishedAt: "2022-06-10T18:34:00Z",
+            content:
+                "The pain of higher prices continues for US consumers.\r\nRecord gas prices drove inflation to 8.6% for the 12 months ending in May, higher than the pace in April, according to the latest Consumer Price… [+5274 chars]",
+        },
+        {
+            source: {
+                id: "reuters",
+                name: "Reuters",
+            },
+            author: null,
+            title:
+                "Britain, U.N. official condemn Donbas death sentences against British soldiers - Reuters UK",
+            description:
+                'Britain on Friday condemned Russian proxy authorities in Donbas for what it called an "egregious breach" of the Geneva convention in sentencing to death two British nationals captured in the separatist region while fighting for Ukraine.',
+            url: "https://www.reuters.com/world/uk/britain-says-talking-ukraine-not-russia-about-jailed-soldiers-2022-06-10/",
+            urlToImage:
+                "https://www.reuters.com/resizer/OCUmBrNb-yspO_yNAQARFNfo1NM=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/PSQFXXDZRZP3JF2EOSAPCXCLO4.jpg",
+            publishedAt: "2022-06-10T18:12:00Z",
+            content:
+                'LONDON, June 10 (Reuters) - Britain on Friday condemned Russian proxy authorities in Donbas for what it called an "egregious breach" of the Geneva convention in sentencing to death two British nation… [+3186 chars]',
+        },
+        {
+            source: {
+                id: "cnn",
+                name: "CNN",
+            },
+            author: "Eliza Mackintosh, Rob Iddiols and Niamh Kennedy, CNN",
+            title:
+                "UK judge allows first flight sending asylum-seekers to Rwanda to go ahead - CNN",
+            description:
+                "The United Kingdom's controversial plan to send asylum-seekers to Rwanda as early as next week was green-lit on Friday, after the High Court in London denied an injunction to block the first flight.",
+            url: "https://www.cnn.com/2022/06/10/uk/uk-rwanda-deportation-flight-high-court-ruling-intl-gbr/index.html",
+            urlToImage:
+                "https://cdn.cnn.com/cnnnext/dam/assets/220610101011-priti-patel-rwanda-super-tease.jpg",
+            publishedAt: "2022-06-10T17:53:00Z",
+            content:
+                "(CNN)The United Kingdom's controversial plan to send asylum-seekers to Rwanda as early as next week was green-lit on Friday, after the High Court in London denied an injunction to block the first fli… [+948 chars]",
+        },
+        {
+            source: {
+                id: "cbs-news",
+                name: "CBS News",
+            },
+            author: "Kathryn Watson",
+            title:
+                "6 new things we learned from the first public Jan. 6 hearing - CBS News",
+            description:
+                "The committee presented never-before-seen footage from witness interviews.",
+            url: "https://www.cbsnews.com/news/january-6-committee-hearing-learned/",
+            urlToImage:
+                "https://assets1.cbsnewsstatic.com/hub/i/r/2022/06/10/109c6790-c350-4e6a-bf08-dc0fceba5630/thumbnail/1200x630/812d8769dbd9108787a7bcdb28011a54/cbsn-fusion-never-before-seen-video-testimony-airs-during-jan-6-committee-hearing-thumbnail-1057672-640x360.jpg",
+            publishedAt: "2022-06-10T17:48:00Z",
+            content:
+                "The House select committee investigating the Jan. 6, 2021, assault on the U.S. Capitol revealed new insight into what happened that day during its prime-time hearing Thursday night. It was the first … [+5059 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "CNBC",
+            },
+            author: "Thomas Franck",
+            title:
+                "Watch live: Biden speaks about the highest inflation since 1981 - CNBC",
+            description:
+                "President Joe Biden will offer comments on the May CPI inflation report that showed that prices are rising at their fastest pace since 1981.",
+            url: "https://www.cnbc.com/2022/06/10/watch-live-joe-biden-speaks-about-inflation-after-may-cip-report.html",
+            urlToImage:
+                "https://image.cnbcfm.com/api/v1/image/107074299-16548841592022-06-10t180208z_1985539206_rc22pu9eahrk_rtrmadp_0_americas-summit.jpeg?v=1654884191&w=1920&h=1080",
+            publishedAt: "2022-06-10T17:43:55Z",
+            content:
+                "[The stream is slated to start at 1:45 p.m. ET. Please refresh the page if you do not see a player above at that time.]\r\nPresident Joe Biden is set to speak about the latest inflation report, which s… [+2044 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "CNBC",
+            },
+            author: "Spencer Kimball",
+            title:
+                "Some monkeypox patients also have sexually transmitted diseases, CDC says - CNBC",
+            description:
+                "CDC Director Rochelle Walensky said some patients with monkeypox also had syphilis, herpes, gonorrhea or chlamydia infections.",
+            url: "https://www.cnbc.com/2022/06/10/some-monkeypox-patients-also-have-sexually-transmitted-diseases-cdc-says.html",
+            urlToImage:
+                "https://image.cnbcfm.com/api/v1/image/106808217-16074624522020-12-08t204842z_581347166_rc28jk92jzgu_rtrmadp_0_usa-biden.jpeg?v=1654880243&w=1920&h=1080",
+            publishedAt: "2022-06-10T17:35:22Z",
+            content:
+                "Some people recently diagnosed with sexually transmitted diseases may also have monkeypox, the Centers for Disease Control and Prevention said, warning physicians that they need to watch and test for… [+6027 chars]",
+        },
+        {
+            source: {
+                id: "cnn",
+                name: "CNN",
+            },
+            author: "Jason Hanna, Elizabeth Wolfe and Elizabeth Joseph, CNN",
+            title:
+                "Uvalde school police chief says he didn't keep officers from breaching massacre scene and didn't consider himself the commander, report says - CNN",
+            description:
+                "In his first extensive public comments about his actions during last month's Texas school massacre, the Uvalde school police chief has contradicted previous narratives about his role, telling the Texas Tribune that he didn't consider himself the incident comm…",
+            url: "https://www.cnn.com/2022/06/10/us/uvalde-texas-elementary-school-shooting-friday/index.html",
+            urlToImage:
+                "https://cdn.cnn.com/cnnnext/dam/assets/220601093844-pete-arredondo-uvalde-cisd-police-chief-shimon-0601-super-tease.jpg",
+            publishedAt: "2022-06-10T17:31:00Z",
+            content:
+                "(CNN)In his first extensive public comments about his actions during last month's Texas school massacre, the Uvalde school police chief has contradicted previous narratives about his role, telling th… [+10754 chars]",
+        },
+        {
+            source: {
+                id: "fox-news",
+                name: "Fox News",
+            },
+            author: "Ann Schmidt",
+            title:
+                "Rectal cancer drug trial of dostarlimab cures all patients: report - Fox News",
+            description:
+                "A clinical trial of dostarlimab, done by Memorial Sloan Kettering Cancer Center, found the drug appears to have completely cured 12 patients of rectal cancer.",
+            url: "https://www.foxnews.com/lifestyle/rectal-cancer-drug-trial-dostarlimab-cure",
+            urlToImage:
+                "https://static.foxnews.com/foxnews.com/content/uploads/2022/06/Clinical-trial-iStock.jpg",
+            publishedAt: "2022-06-10T17:14:23Z",
+            content:
+                "The results of a small clinical trial have found that there could be a cure for rectal cancer. \r\nThe trial conducted by Memorial Sloan Kettering Cancer Center in Manhattan involved at least 12 rectal… [+2873 chars]",
+        },
+        {
+            source: {
+                id: "ign",
+                name: "IGN",
+            },
+            author: "Joe Skrebels",
+            title:
+                "Dragon Age: Absolution - a New Netflix Animated Series - Is Coming in December - IGN - IGN",
+            description:
+                "Dragon Age: Absolution is a new Netflix animated series set in the beloved Bioware series' fantasy world – and it arrives this December.",
+            url: "https://www.ign.com/articles/dragon-age-absolution-netflix-animated-series-december-release-date",
+            urlToImage:
+                "https://assets-prd.ignimgs.com/2022/06/10/untitled-1-1654855865666.jpg?width=1280",
+            publishedAt: "2022-06-10T17:10:28Z",
+            content:
+                "Dragon Age: Absolution is a new Netflix animated series set in the beloved BioWare series' fantasy world and it arrives this December.\r\nAnnounced on the final day of Netflix Geeked Week, a trailer sh… [+1464 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "YouTube",
+            },
+            author: null,
+            title:
+                "UFC 275 Embedded: Vlog Series - Episode 5 - UFC - Ultimate Fighting Championship",
+            description:
+                "Jiri Prochazka unwinds with a workout. Weili Zhang enjoys seeing Joanna Jedrzejczyk. Jack Della Maddalena plans a finish. Champ Valentina Shevchenko talks to...",
+            url: "https://www.youtube.com/watch?v=Ctn1HetRYGM",
+            urlToImage: "https://i.ytimg.com/vi/Ctn1HetRYGM/maxresdefault.jpg",
+            publishedAt: "2022-06-10T17:09:57Z",
+            content: null,
+        },
+        {
+            source: {
+                id: null,
+                name: "Hoops Hype",
+            },
+            author: "Michael Scotto",
+            title:
+                "NBA Mock Draft: Christian Wood Trade Rumors; Dyson Daniels Into Top 10 - Hoops Hype",
+            description:
+                "Following the withdrawals of several prospects, the aggregate NBA mock draft has shifted noticeably, and more intel on teams have surfaced with the draft nearing. To get a better projection of wher…",
+            url: "https://hoopshype.com/lists/aggregate-nba-mock-draft-christian-wood-trade-rumors-dyson-daniels-top-10/",
+            urlToImage:
+                "https://hoopshype.com/wp-content/uploads/sites/92/2022/05/USATSI_17731074.jpg?w=1024&h=576&crop=1",
+            publishedAt: "2022-06-10T17:08:49Z",
+            content:
+                "Following the withdrawals of several prospects, the aggregate NBA mock draft has shifted noticeably, and more intel on teams have surfaced with the draft nearing.\r\nTo get a better projection of where… [+23927 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "CNBC",
+            },
+            author: "Diana Olick",
+            title:
+                "Big landlords jump into the homebuilding business as demand for single-family rentals surges - CNBC",
+            description:
+                "Big publicly traded landlords are fast becoming homebuilders, as the supply of homes for rent drops and demand surges.",
+            url: "https://www.cnbc.com/2022/06/10/big-landlords-jump-into-the-homebuilding-as-demand-for-single-family-rentals-surges.html",
+            urlToImage:
+                "https://image.cnbcfm.com/api/v1/image/107074158-1654873617363-IMG_3449.jpg?v=1654873728&w=1920&h=1080",
+            publishedAt: "2022-06-10T16:38:25Z",
+            content:
+                "As demand for single-family rental homes surges, big landlords are jumping into the homebuilding business to shore up falling supplies.\r\nThe push comes as more Americans have the flexibility to work … [+3920 chars]",
+        },
+        {
+            source: {
+                id: "the-wall-street-journal",
+                name: "The Wall Street Journal",
+            },
+            author: "James Hookway",
+            title:
+                "Outgunned Ukraine Needs More Weapons Fast as Russia Advances, Officials Say - The Wall Street Journal",
+            description:
+                "Ukrainian leaders are warning that the fate of the industrial heartlands in their country’s east depends on how much Western-supplied heavy weaponry can be placed on the front lines.",
+            url: "https://www.wsj.com/articles/outgunned-ukraine-needs-more-weapons-fast-as-russia-advances-officials-say-11654860056",
+            urlToImage: "https://images.wsj.net/im-561436/social",
+            publishedAt: "2022-06-10T16:28:00Z",
+            content:
+                "<ul><li>Ukraines defense minister pleaded for more weapons from the West to halt the advance of Russian forces in eastern Ukraine.</li><li>The U.K.s foreign secretary spoke with her Ukrainian counter… [+937 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "The Guardian",
+            },
+            author: "Guardian staff reporter",
+            title:
+                "Biden to end Covid testing requirement for travel into US - The Guardian",
+            description:
+                "Requirement to test negative, which has been in place since January 2021, criticized by travel industry and some lawmakers",
+            url: "https://amp.theguardian.com/world/2022/jun/10/biden-end-covid-test-requirement-travel-us",
+            urlToImage:
+                "https://i.guim.co.uk/img/media/d4053673c64b9e3bd857e4a1619d77087e8dc8b0/0_208_6240_3744/master/6240.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=bbe654926410137d0db958a221625df7",
+            publishedAt: "2022-06-10T15:54:00Z",
+            content:
+                "The Biden administration will today announce the end of its requirement that people entering the country test negative for Covid-19, a senior administration official has told news outlets.\r\nAccording… [+1700 chars]",
+        },
+        {
+            source: {
+                id: "fox-news",
+                name: "Fox News",
+            },
+            author: "Adam Shaw",
+            title:
+                "Biden set to announce migration pact with Western Hemisphere leaders; Harris not present - Fox News",
+            description:
+                'President Biden on Friday, along with Western Hemisphere leaders, will announce a new migration pact that will promote “safe and orderly migration" in the region.',
+            url: "https://www.foxnews.com/politics/biden-migration-pact-western-hemisphere-leaders-harris",
+            urlToImage:
+                "https://static.foxnews.com/foxnews.com/content/uploads/2022/06/AP22161160193671.jpg",
+            publishedAt: "2022-06-10T15:53:46Z",
+            content:
+                'President Biden on Friday, along with a number of Western Hemisphere leaders, will announce a new migration pact that will promote "safe and orderly migration" -- just as the administration is scramb… [+5475 chars]',
+        },
+        {
+            source: {
+                id: "fox-news",
+                name: "Fox News",
+            },
+            author: "Greg Norman",
+            title:
+                "Mom dead in Massachusetts river after trying to save kids, search for son continues - Fox News",
+            description:
+                "Massachusetts State Police say a search is happening for a child that disappeared in the Merrimack River, following reports his mother drowned trying to save him.",
+            url: "https://www.foxnews.com/us/massachusetts-merrimack-river-newburyport-drowning-mother-child",
+            urlToImage:
+                "https://static.foxnews.com/foxnews.com/content/uploads/2022/06/Merrimack-River-Massachusetts-Rescue.png",
+            publishedAt: "2022-06-10T15:07:01Z",
+            content:
+                "Massachusetts State Police say search crews are back combing the waters of the Merrimack River near Newburyport Friday in hopes of finding a missing six-year-old boy after his mother reportedly drown… [+1507 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "YouTube",
+            },
+            author: null,
+            title:
+                "Sandra Oh & Jung Ho-Yeon | Actors on Actors - Full Conversation - Variety",
+            description:
+                "In their Actors on Actors conversation Sandra Oh ('Killing Eve' & 'The Chair') and Jung Ho-Yeon ('Squid Game') explore what it was like becoming internationa...",
+            url: "https://www.youtube.com/watch?v=pBNKhCIkAww",
+            urlToImage: "https://i.ytimg.com/vi/pBNKhCIkAww/hqdefault.jpg",
+            publishedAt: "2022-06-10T15:00:58Z",
+            content: null,
+        },
+        {
+            source: {
+                id: null,
+                name: "The Ringer",
+            },
+            author: "Rodger Sherman",
+            title:
+                "Oklahoma Softball Just Put On an Ass-Kicking Clinic for the Ages - The Ringer",
+            description:
+                "The Sooners are back-to-back national champions. They’re also the most dominant team their sport has ever seen.",
+            url: "https://www.theringer.com/sports/2022/6/10/23162496/oklahoma-sooners-college-world-series-softball-national-title",
+            urlToImage:
+                "https://cdn.vox-cdn.com/thumbor/COQCpGN-2y_4siLK-m-ISYspU5Y=/0x215:3000x1786/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23619252/oksoftball_getty_ringer.jpeg",
+            publishedAt: "2022-06-10T14:40:56Z",
+            content:
+                "A peculiar rule came into play at the 2022 Womens College World Series: While most NCAA softball games can be ended by a mercy rule (or run rule) when a team leads by eight runs or more in the fifth … [+3770 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "Deadline",
+            },
+            author: "Anthony D'Alessandro",
+            title:
+                "‘Jurassic World Dominion’ Sees $18M In Previews – Box Office - Deadline",
+            description:
+                "Universal/Amblin’s Jurassic World Dominion earned $18M in previews, but that’s not just from 4PM showtimes yesterday, but also other stunt previews earlier this week. The Colin Trevorrow directed movie played at 4,150 theaters. Again, the bulk of that preview…",
+            url: "https://deadline.com/2022/06/jurassic-world-dominion-box-office-1235042811/",
+            urlToImage:
+                "https://deadline.com/wp-content/uploads/2022/06/jurassic.jpeg?w=1024",
+            publishedAt: "2022-06-10T14:33:00Z",
+            content:
+                "Universal/Amblin’sJurassic World Dominionearned $18M in previews, but that’s not just from 4PM showtimes yesterday, but also other stunt previews earlier this week. The Colin Trevorrow directed movie… [+2088 chars]",
+        },
+        {
+            source: {
+                id: null,
+                name: "Gizmodo.com",
+            },
+            author: "Florence Ion",
+            title: "The New iOS 16 Features that Android Had First - Gizmodo",
+            description:
+                "An Apple event week wouldn't be complete with some comparisons to its biggest competitor, Google.",
+            url: "https://gizmodo.com/ios-16-features-android-first-always-on-display-lock-sc-1849042695",
+            urlToImage:
+                "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/3ee3e7a47c74f8f4d2b1f33be6bd244d.jpg",
+            publishedAt: "2022-06-10T14:30:00Z",
+            content:
+                "You can still track your walks without the Apple Watch in tow, but iOS 16 will also let you track other activities using the Fitness app and the iPhones built-in motion sensors. The iPhone can track … [+528 chars]",
+        },
+    ];
+    constructor() {
+        super();
+        this.state = {
+            articles: this.articles,
+            loading: false,
+            page: 1
+        };
+    }
+
+    async componentDidMount() {
+        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=1b9d653c27764ceb89c8dc67f8234bd2&page=1&pageSize=${this.props.pageSize}`;
+
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults }) 
+
+    }
+
+    handlePrevClick = async () => {
+        console.log("previous");
+
+        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=1b9d653c27764ceb89c8dc67f8234bd2&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+        this.setState({ loading: true })
+        let data = await fetch(url);
+        let parsedData = await data.json();
+
+        this.setState({
+            page: this.state.page - 1,
+            articles: parsedData.articles,
+            loading: false
+        })
+    }
+    handleNextClick = async () => {
+        console.log("Next")
+        if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize))) {
+            let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=1b9d653c27764ceb89c8dc67f8234bd2&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+            this.setState({ loading: true })
+            let data = await fetch(url);
+            let parsedData = await data.json();
+
+            this.setState({
+                page: this.state.page + 1,
+                articles: parsedData.articles,
+                loading: false
+            })
+        }
+    }
+
+    render() {
+        return (
+            <div className="container my-3">
+                <h1 className="text-center">NewsMonkey - Top Headlines</h1>
+                {this.state.loading && <Spinner />}
+                <div className="row">
+                    {!this.state.loading && this.state.articles.map((element) => {
+                        return <div className="col-lg-3" key={element.url}>
+                            <NewsItem
+                                title={element.title ? element.title : " "}
+                                description={element.description ? element.description : " "}
+                                imageUrl={element.urlToImage}
+                                newsUrl={element.url}
+                            />
+                        </div>
+                    })}
+                </div>
+                <div className="container d-flex justify-content-between">
+                    <button disabled={this.state.page <= 1} type="button" class="btn btn-dark" onClick={this.handlePrevClick}>&larr; Previous</button>
+                    <button disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)} type="button" class="btn btn-dark" onClick={this.handleNextClick}>Next &#8594;</button>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default News;
